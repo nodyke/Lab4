@@ -1,4 +1,4 @@
-package Bocharov.client;
+package com.Bocharov.client;
 
 import java.io.IOException;
 
