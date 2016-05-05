@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="javax.servlet.jsp">
+    <CLASSES>
+      <root url="jar://C:/Program Files/Java/jdk1.8.0_73/glassfish4/glassfish/modules/javax.servlet.jsp.jar!/" />
+      <root url="jar://C:/Program Files/Java/jdk1.8.0_73/glassfish4/glassfish/modules/javax.servlet-api.jar!/" />
+      <root url="jar://C:/Program Files/Java/jdk1.8.0_73/glassfish4/glassfish/modules/javax.servlet.jsp-api.jar!/" />
+      <root url="jar://C:/Program Files/Java/jdk1.8.0_73/glassfish4/glassfish/modules/javax.servlet.jsp.jstl-api.jar!/" />
+      <root url="jar://C:/Program Files/Java/jdk1.8.0_73/glassfish4/glassfish/modules/javax.servlet.jsp.jstl.jar!/" />
+      <root url="jar://C:/Program Files/Java/jdk1.8.0_73/glassfish4/glassfish/modules/javax.transaction-api.jar!/" />
+      <root url="jar://C:/Program Files/Java/jdk1.8.0_73/glassfish4/glassfish/modules/javax.websocket-api.jar!/" />
+      <root url="jar://C:/Program Files/Java/jdk1.8.0_73/glassfish4/glassfish/modules/javax.ws.rs-api.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
