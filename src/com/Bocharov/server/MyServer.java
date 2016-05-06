@@ -1,6 +1,8 @@
 package com.Bocharov.server;
 
-import java.io.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.Socket;
 
 /**
@@ -11,47 +13,39 @@ public class MyServer extends Thread {
     Socket client;
 
 
-    public MyServer(int count,Socket client) {
+    public MyServer(int count, Socket client) {
         this.client = client;
-        this.count=count;
+        this.count = count;
         setDaemon(true);
         this.start();
     }
 
     @Override
     public void run() {
-        try {
-
-            DataInputStream in=new DataInputStream(client.getInputStream());
-            DataOutputStream out=new DataOutputStream(client.getOutputStream());
+        try(DataInputStream in = new DataInputStream(client.getInputStream()); DataOutputStream out = new DataOutputStream(client.getOutputStream());)
+        {
             String line = null;
-            int n=0;
+            int n = 0;
+            line = in.readUTF();
+            StringBuilder output = new StringBuilder();
+            String[] words = line.split("\\.|\\ |\\,|\\-");
 
-            while (true)
-            {
-                //System.out.println("work!");
-                line=in.readUTF();
-                StringBuilder output=new StringBuilder();
-                String[] words=line.split("\\.|\\ |\\,|\\-");
-                for (int i=0;i<words.length;i++)
-                {   n=0;
-                    for (String sl:words)
-                    {
-                        if (words[i].equals(sl))n++;
-                    }
-                    if (n>=count) {output.append(words[i]);break;}
-
-
+            for (int i = 0; i < words.length; i++) {
+                n = 0;
+                for (String sl : words) {
+                    if (words[i].equals(sl)) n++;
                 }
-                if (n>=count) out.writeUTF(new String(output));
-                else out.writeUTF(this.count+" Repeated  words are not founded!");
-                out.flush();
-
+                if (n >= count) {
+                    output.append(words[i]);
+                    break;
+                }
             }
-
-
-
-
-        } catch (IOException e) {}
+            if (n >= count) out.writeUTF(new String(output));
+            else out.writeUTF(this.count + " Repeated  words are not founded!");
+            out.flush();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
+
